@@ -1,0 +1,43 @@
+<section class="hero is-primary", style='background-color: <%= @colors[0][1] %>'>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title", style='color: #012649'> Tarea 1 Taller de Integración </h1>
+    </div>
+  </div>
+</section>
+
+<div class="cards">	
+	<div class="card">
+		<div class="card__content2", style='background-color: <%= @colors[4][1] %>'>
+	      <p class="title", align="center">
+	         <strong> Nombre: <%= @episode_json['title']  %></strong>
+	      </p>
+		</div>
+	    <div class="card__content", style='background-color: <%= @colors[4][2] %>''>
+	      <p>
+	         <strong>Código de episodio:</strong> <%= @episode_json['episode_id'] %>
+	      </p>
+	     
+	      <p>
+	         <strong>Fecha en que estuvo al aire:</strong> <%= @episode_json['air_date'] %>
+	      </p>
+	      <p>
+	         <strong>Serie:</strong> <%= @episode_json['series']%>
+	      </p>
+	      <p>
+	         <strong>Temporada:</strong> <%= @episode_json['season'] %>
+	      </p>
+	      <p>
+	         <strong>Capitulo:</strong> <%= @episode_json['episode'] %>
+	      </p>
+	      <p>
+	         <strong>Personajes:</strong> 
+	         <% @episode_json['characters'].each do |character|%>
+	         	<div>
+	         	- <%=  link_to "#{character}", character_path("#{character.gsub(' ','+').gsub('.','')}") %> 
+	         	</div>
+	         <% end %>
+	      </p>
+	    </div> 
+	</div>
+</div>

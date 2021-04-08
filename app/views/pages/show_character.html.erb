@@ -1,0 +1,70 @@
+<section class="hero is-primary", style='background-color: <%= @colors[0][1] %>'>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title", style='color: #012649'> Tarea 1 Taller de Integración</h1>
+    </div>
+  </div>
+</section>
+
+<div class="cards">	
+	<div class="card">
+		<div class="card__content2", style='background-color: <%= @colors[4][1] %>'>
+	      <p class="title", align="center">
+	         <strong> Nombre: <%= @character_json['name']  %></strong>
+	      </p>
+		</div>
+
+	    <div class="card__content", style='background-color: <%= @colors[4][2] %>''>
+	      <p>
+	         <strong>Ocupación: </strong> 
+	         <% @character_json['occupation'].each do |oc|%>
+	         	<div>
+	         	- <%= oc%> 
+	         	</div>
+	         <% end %>
+	      </p>
+	      <p>
+	         <strong>Status:</strong> <%= @character_json['status']%>
+	      </p>
+	      <p>
+	         <strong>Apodo:</strong> <%= @character_json['nickname'] %>
+	      </p>
+	      <p>
+	         <strong>Aparece en las temporadas:</strong> 
+	         <% @character_json['appearance'].each do |ap|%>
+	         	<div>
+	         	- <%= ap%> 
+	         	</div>
+	         <% end %>
+	      </p>
+	    </div>
+	</div>
+	<div>
+		<img src="<%= @character_json['img']%>" >
+	</div>
+</div> 
+
+<div>
+	<div>
+		<p>
+		     <strong>Citas: </strong> 
+		     <% @quotes.each do |qu|%>
+		     	<div>
+		     	- <%= qu['quote']%> 
+		     	</div>
+		     <% end %>
+		</p>
+	</div>
+	<div>
+		<p>
+		     <strong>Capítulos donde aparece: </strong> 
+		     <% @episodes_json.each do |episode|%>
+		     	<div>
+		     	<%if episode['characters'].include?(@character_json['name']) %>
+		     		- <%= link_to "#{episode['title']}", episode_path(episode['episode_id'])%> 
+		     	</div>
+		     	<%end%>
+		     <% end %>
+		</p>
+	</div>
+</div>
