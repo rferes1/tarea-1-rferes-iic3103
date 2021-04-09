@@ -1,0 +1,31 @@
+<section class="hero is-primary", style='background-color: <%= @colors[0][1] %>'>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title", style='color: #012649'> Tarea 1 Taller de Integración </h1>
+    </div>
+  </div>
+</section>
+
+<h2>Buscar personaje</h2> 
+<%= form_tag(search_path, method: :get) do%>
+	<%= text_field_tag(:search, params[:search]) %>
+	<%= submit_tag ("Buscar")%>
+<% end%>
+ 
+<div class="card">
+ 	<div class="card__content2", style='background-color: <%= @colors[4][1] %>'>
+		<p class="title", align="center">
+		    <strong> Resultados busqieda  </strong>
+		</p>
+	</div>
+	    <div class="card__content", style='background-color: <%= @colors[4][2] %>''>
+	      <p>
+	         <strong></strong> 
+	         <% @results_json.each do |result|%>
+	         	<div>
+	         	- <%=  link_to "#{result['name']}", character_path("#{result['name'].gsub(' ','+').gsub('.','')}") %> 
+	         	</div>
+	         <% end %>
+	      </p>
+	    </div>
+</div>

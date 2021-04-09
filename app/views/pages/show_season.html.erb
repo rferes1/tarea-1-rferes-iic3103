@@ -1,0 +1,42 @@
+<section class="hero is-primary", style='background-color: <%= @colors[0][1] %>'>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title", style='color: #012649'> Tarea 1 Taller de Integración </h1>
+    </div>
+  </div>
+</section>
+
+<h2>Buscar personaje</h2> 
+<%= form_tag(search_path, method: :get) do%>
+	<%= text_field_tag(:search, params[:search]) %>
+	<%= submit_tag ("Buscar")%>
+<% end%>
+
+<div class="cards">
+	<% @season_json.each do |episode| %>
+		<% if episode['season'] == @season_id %>
+			<div class="card">
+				<div class="card__content2", style='background-color: <%= @colors[4][1] %>'>
+			      <p class="title", align="center">
+			         <strong> Nombre: <%= episode['title']  %></strong>
+			      </p>
+			</div>
+			    <div class="card__content", style='background-color: <%= @colors[4][2] %>''>
+			      <p>
+			         <strong>Código de episodio:</strong> <%= episode['episode_id'] %>
+			      </p>
+			     
+			      <p>
+			         <strong>Fecha en que estuvo al aire:</strong> <%= episode['air_date'] %>
+			      </p>
+			    </div>
+			    <div class="card__info">
+			    <div>
+			      <p><%= link_to "Ver detalles", episode_path(episode['episode_id'])%></p>
+
+			    </div>
+			    </div>
+			</div>
+		<%end%>
+	<% end %>
+</div>

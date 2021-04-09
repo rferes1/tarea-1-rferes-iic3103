@@ -6,6 +6,12 @@
   </div>
 </section>
 
+<h2>Buscar personaje</h2> 
+<%= form_tag(search_path, method: :get) do%>
+	<%= text_field_tag(:search, params[:search]) %>
+	<%= submit_tag ("Buscar")%>
+<% end%>
+
 <div class="cards">	
 	<div class="card">
 		<div class="card__content2", style='background-color: <%= @colors[4][1] %>'>
@@ -30,8 +36,25 @@
 	         <strong>Apodo:</strong> <%= @character_json['nickname'] %>
 	      </p>
 	      <p>
-	         <strong>Aparece en las temporadas:</strong> 
+	         <strong>Actor/acrtiz:</strong> <%= @character_json['portrayed'] %>
+	      </p>
+	      <p>
+	         <strong>Temporadas de Breaking Bad:</strong>
+	         <%if @character_json['appearance'] == [] %>
+	         	<%= "Ninguna"%>
+	         <%end%>
 	         <% @character_json['appearance'].each do |ap|%>
+	         	<div>
+	         	- <%= ap%> 
+	         	</div>
+	         <% end %>
+	      </p>
+	      <p>
+	         <strong>Temporadas de Better Call Saul:</strong>
+	         <%if @character_json['better_call_saul_appearance'] == [] %>
+	         	<%= "Ninguna"%>
+	         <%end%>
+	         <% @character_json['better_call_saul_appearance'].each do |ap|%>
 	         	<div>
 	         	- <%= ap%> 
 	         	</div>
